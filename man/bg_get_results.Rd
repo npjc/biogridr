@@ -12,7 +12,7 @@ bg_get_results(bg, as = "tab2", file = NULL, .request = FALSE)
 \item{as}{format in which to return results. (character string)}
 
 \item{file}{Specify name of file if you wish to write the results to file.
-(character string)}
+(character string). N.B. not yet implemented.}
 }
 \description{
 GET results of a query to the BioGRID web service.

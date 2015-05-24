@@ -3,12 +3,14 @@
 #' @param bg biogrid object returned by \code{\link{bg}}. (named list)
 #' @param as format in which to return results. (character string)
 #' @param file Specify name of file if you wish to write the results to file.
-#' (character string)
+#' (character string). N.B. not yet implemented.
 #' @export
 bg_get_results <- function(bg, as = "tab2", file = NULL, .request = FALSE) {
 
   bg$query$format <- ratify_format(as)
   bg <- ratify_bg(bg)
+
+  if(!is.null(file)) stop("direct file writing not implemented yet.")
 
   if(.request) {
     r <- httr::GET(url = bg$url, path = bg$path, query = bg$query)
