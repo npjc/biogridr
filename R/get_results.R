@@ -17,9 +17,7 @@ bg_get_results <- function(bg, as = "tab2", file = NULL, .request = FALSE) {
 
   parse_fun <- select_parser_fun(bg)
 
-  # pagination handling
-  i <- start <- 1
-  dt_ls <- vector("list")
+  # pagination handling function for interactions/
   paginate <- function(req) {
     req <- req %>% bg_constrain(start = start)
     r <- httr::GET(url = req$url, path = req$path, query = req$query)
@@ -30,8 +28,20 @@ bg_get_results <- function(bg, as = "tab2", file = NULL, .request = FALSE) {
       paginate(req)
     }
   }
-  paginate(bg)
-  lapply(dt_ls, parse_fun) %>% data.table::rbindlist()
+
+  # only paginate for interactions as it's the only one that doesn't ignore
+  # start parameter.
+
+  if( bg$path == bg_ws$uri$interactions) {
+    dt_ls <- vector("list")
+    i <- start <- 1
+    paginate(bg)
+    lapply(dt_ls, parse_fun) %>% data.table::rbindlist()
+  } else {
+    rout <- httr::GET(url = bg$url, path = bg$path, query = bg$query)
+    parse_fun(rout)
+  }
+
 }
 
 #' Validate if a format is allowed
