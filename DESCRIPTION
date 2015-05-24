@@ -1,0 +1,26 @@
+Package: biogridr
+Type: Package
+Title: BioGRID Web Service R API
+Version: 0.0.0.9000
+Date: 2015-05-23
+Authors@R: c(
+    person("Nicolas", "Coutin", , "nicolas.coutin@gmail.com", c("aut", "cre"))
+    )
+Description: Biogridr provides an R interface to the BioGRID (Biological
+    General Repository for Interaction Datasets) REST API. It aims to provide
+    convenient and reproducible ways to query and access BioGRID data.
+License: MIT + file LICENSE
+BugReports: https://github.com/nicolascoutin/biogridr/issues
+URL: https://github.com/nicolascoutin/biogridr
+LazyData: TRUE
+Depends:
+    R (>= 3.2.0)
+Imports:
+    data.table (>= 1.9.4),
+    httr (>= 0.6.1),
+    magrittr,
+    xml2 (>= 0.1.0)
+Suggests:
+    testthat,
+    knitr
+VignetteBuilder: knitr
