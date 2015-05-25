@@ -23,6 +23,7 @@ bg_get_results <- function(bg, as = "tab2", file = NULL, .request = FALSE) {
   paginate <- function(req) {
     req <- req %>% bg_constrain(start = start)
     r <- httr::GET(url = req$url, path = req$path, query = req$query)
+    ratify_request(r)
     if(length(httr::content(r,"raw"))!=0){
       dt_ls[[i]] <<- r
       i <<- i + 1
