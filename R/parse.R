@@ -56,7 +56,6 @@ select_parser_fun <- function(bg) {
 
   evidence_parser <- function(request) {
     dt <- httr::content(request,"text") %>% data.table::fread(header = F, sep = "\n")
-    dt <- data.table::fread(dt)
     data.table::setnames(dt,"evidence_type")
     data.table::setattr(dt, "class", "data.frame")
     dt
