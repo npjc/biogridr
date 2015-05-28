@@ -22,13 +22,13 @@ taxId <- function(organism) {
 #' @return data.frame of organisms and their taxID supported by biogrid
 #' @keywords internal
 get_organisms <- function() {
-  already_exists <- exists("organisms",envir=biogridr:::bg_ws)
+  already_exists <- exists("organisms",envir=biogridr:::ws_)
   if (already_exists) {
-    get("organisms", envir = biogridr:::bg_ws)
+    get("organisms", envir = biogridr:::ws_)
   } else {
     organisms <- bg("organisms") %>%
       bg_get_results()
-    assign("organisms", organisms, envir = biogridr:::bg_ws)
+    ws_assign(organisms)
   }
-  bg_ws$organisms
+  ws_$organisms
 }

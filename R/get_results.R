@@ -35,7 +35,7 @@ bg_get_results <- function(bg, as = "tab2", file = NULL, .request = FALSE) {
   # only paginate for interactions as it's the only one that doesn't ignore
   # start parameter.
 
-  if( bg$path == bg_ws$uri$interactions) {
+  if( bg$path == ws_$uri$interactions) {
     dt_ls <- vector("list")
     i <- start <- 1
     paginate(bg)

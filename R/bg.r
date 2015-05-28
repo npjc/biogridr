@@ -7,7 +7,7 @@
 bg <- function(access_point) {
   key <- ratify_key()
   path <- ratify_access_point(access_point)
-  list(url = bg_ws$url, path = path, query = list(accessKey = key))
+  list(url = ws_$url, path = path, query = list(accessKey = key))
 }
 
 
@@ -16,10 +16,10 @@ bg <- function(access_point) {
 #' @keywords internal
 ratify_key <- function() {
 
-  valid <- bg_ws$key != "not set"
+  valid <- ws_$key != "not set"
 
   if (valid) {
-    bg_ws$key
+    ws_$key
   }else {
     stop("Must get an application key. First run bg_get_key")
   }
@@ -31,10 +31,10 @@ ratify_key <- function() {
 #' @keywords internal
 ratify_access_point <- function(access_point) {
 
-  valid <- access_point %in% names(bg_ws$uri)
+  valid <- access_point %in% names(ws_$uri)
 
   if (valid) {
-    bg_ws$uri[[access_point]]
+    ws_$uri[[access_point]]
   }else {
     stop(access_point, " is not a valid access point.")
   }

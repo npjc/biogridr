@@ -21,7 +21,7 @@
 NULL
 
 .onLoad <- function(...) {
-  bg_ws_build()
+  ws_build()
   packageStartupMessage("biogridr: Beginner developer minions about. ",
                         "Be on the lookout. ")
 }

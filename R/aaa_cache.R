@@ -1,16 +1,22 @@
-bg_ws <- new.env()
+ws_ <- new.env()
 
-#' Assign static variables to bg_ws environment
+#' Convenience function for assignment
 #' @keywords internal
-bg_ws_build <- function() {
+ws_assign <- function(var, env = biogridr:::ws_) {
+  assign(deparse(substitute(var)), var, envir = env)
+}
+
+#' Assign static variables to ws_ environment
+#' @keywords internal
+ws_build <- function() {
 
   ## webservice url
   url <- "http://webservice.thebiogrid.org"
-  assign("url", url, envir = biogridr:::bg_ws)
+  ws_assign(url)
 
   ## webservice access key
   key <- "not set"
-  assign("key", key, envir = biogridr:::bg_ws)
+  ws_assign(key)
 
   ## webservice access_points
   uri <- list(
@@ -21,6 +27,6 @@ bg_ws_build <- function() {
     version        = "version/",
     generate_key   = "admin/GenerateAccessKey.php")
 
-  assign("uri",uri, envir = biogridr:::bg_ws)
+  ws_assign(uri)
 
 }

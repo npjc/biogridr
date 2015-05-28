@@ -22,7 +22,7 @@ bg_get_key <- function(first, last, email, project) {
          "4" = build_form(first, last, email, project),
          stop("form incomplete!"))
 
-  r <- httr::POST(url = bg_ws$url, path = bg_ws$uri$generate_key, body = form)
+  r <- httr::POST(url = ws_$url, path = ws_$uri$generate_key, body = form)
   if(httr::status_code(r)!=200) return(r)
 
   # the access key is in the first span of the first h3 in the html doc.
@@ -30,7 +30,7 @@ bg_get_key <- function(first, last, email, project) {
   key <- xml2::xml_find_one(h,"//h3//span") %>%
     xml2::xml_text()
   # puts the key into the cache env so it can be retrived by other functions.
-  assign("key", key, envir=biogridr:::bg_ws)
+  ws_assign(key)
   invisible(key)
 }
 

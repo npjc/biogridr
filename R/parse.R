@@ -3,7 +3,7 @@
 #' @keywords internal
 select_parser_fun <- function(bg) {
   uri <- bg$path
-  selection <- grep(uri, biogridr:::bg_ws$uri, value = T) %>% names()
+  selection <- grep(uri, biogridr:::ws_$uri, value = T) %>% names()
 
   interactions_parser <- function(request) {
     #   # how to get the names of the tab2 format columns.
