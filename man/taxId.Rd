@@ -15,4 +15,7 @@ taxonomy id (integer vector)
 \description{
 retreive taxonomy id for through fuzzy matching
 }
+\examples{
+taxId("Drosophila melanogaster")
+}
 

@@ -2,6 +2,8 @@
 #'
 #' @param organism name (character string)
 #' @return taxonomy id (integer vector)
+#' @examples
+#' taxId("Drosophila melanogaster")
 #' @export
 taxId <- function(organism) {
   df <- get_organisms()
