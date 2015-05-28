@@ -4,6 +4,10 @@ biogridr: BioGRID R API
 
 ## Synopsis
 
+Biogridr provides an R interface to the BioGRID (Biological General Repository for Interaction Datasets) REST API [described here](Biological General Repository for Interaction Datasets). It aims to provide convenient and reproducible ways to query and access BioGRID data.
+
+
+
 ## Install
 
 ```r
@@ -19,7 +23,7 @@ library(biogridr)
 
 To talk to BioGRID we first need to get a free access key. For this use 
 `bg_get_key()`. If you provide your details as in below it creates a profile 
-for you and assigns a key (or if you have already done this before it retreives the key). `bg_get_key()` will store you key so you only need to run it once at the beginning of each session.
+for you and assigns a key (or if you have already done this before it retreives the key). `bg_get_key()` will store you key so you only need to run it once at the beginning of each session. This is equivalent to interactively doing this via [this form](http://webservice.thebiogrid.org/)
 
 ```r
 bg_get_key("first_name","last_name","email@domain.com","my_project_name")
